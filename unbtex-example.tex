@@ -1,0 +1,340 @@
+%%
+%% UnBTeX: A class for bachelor, master, and doctoral thesis at the
+%% University of Brasilia (UnB), Brazil
+%% Version 1.5.2 2024/07/04
+%% Copyright (C) 2021-2024 by Henrique C. Ferreira <hcferreira@unb.br>
+%%
+%% This class file may be distributed and/or modified under the conditions
+%% of the LaTeX Project Public License, either version 1.3 of this license
+%% or (at your option) any later version. The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of LaTeX version
+%% 2005/12/01 or later.
+%%
+%% This file is a template for use with the UnBTex class
+%% To compile the document you should call pdflatex, bibtex, pdflatex
+%% 
+
+\documentclass[
+    % -- Opção da classe memoir -- https://www.ctan.org/pkg/memoir
+    oneside, % Caso queira imprimir em frente e verso, use twoside
+    % -- Opção da classe abntex2 -- https://www.ctan.org/pkg/abntex2
+    sumario=tradicional, % Remova esta opção para sumário padrão ABNT
+    % -- Selecione o idioma no qual o trabalho será escrito
+    %idioma=brazil, % Para texto principal em português
+    idioma=english, % Para texto principal em inglês  
+    % -- Selecione o estilo das referências bibliográficas
+    bib=alf, % Bibliografia nas normas da ABNT, estilo autor-data
+    %bib=num, % Bibliografia nas normas da ABNT, estilo numérico
+    % -- Opções de idiomas para pacotes utilizados -- Não alterar
+    english, % Para hifenização de palavras em inglês
+    brazil % Para hifenização de palavras em português
+    ]{unbtex}
+
+% ---
+% Pacotes básicos (Adicione outros pacotes necessários para o seu trabalho)
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{xcolor}
+% ---
+\usepackage{longtable} % Pacote para tabelas que ocupam mais de uma página
+\usepackage{rotating} % Pacote para girar tabelas (e outros objetos)
+% ---
+
+% ---
+% Compila o índice
+% ---
+\makeindex
+% ---
+
+% ---
+% Compila a nomenclatura
+% ---
+\makenomenclature
+% ---
+
+% ---
+% Diretório das figuras
+\graphicspath{{unbtex-example/figuras}}
+% --- 
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Informações do trabalho
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+% ---
+% Título
+% ---
+\titulo{Secure remote control UAV system based on chaotic cryptography in hardware} % No idioma principal do texto
+% Insira \\ caso queira forçar quebras de linha no título
+% Não utilize caixa alta para o título do trabalho e nem das seções (com exceção de siglas)
+% ---
+\tituloestrangeiro{} % Escreva aqui título em português se o trabalho for escrito em inglês (caso contrário, deixe vazio)
+% ---
+
+% ---
+% Autores
+% ---
+\autori[]{Arthur}{Lima} % \autori[]{Nome}{Sobrenome}
+% No caso de nomes como Carlos de Souza, utilize \autori[]{Carlos de}{Souza} (e não \autori[]{Carlos}{de Souza})
+% ---
+\autorii[]{}{} % Deixe os argumentos vazios se não tiver segundo autor
+% ---
+
+% ---
+% Código Cutter para a ficha catalográfica
+% Gerado a partir da entrada <Sobrenome, Nome> (do primeiro autor) no site https://www.tabelacutter.com/
+% ---
+\numerocutter{} % Para não imprimir o código na ficha catalográfica, deixe o argumento vazio
+%\numerocutter{769} % Prencher o argumento do comando apenas com os números gerados
+% ---
+
+% ---
+% Orientadores
+% ---
+\orientador[Orientador]{Prof. Dr.}{Jones Yudi}{Silva} % Para alterar o gênero, basta trocar Orientador por Orientadora
+% ---
+\coorientador[Coorientador]{Prof. Dr.}{Janier}{Arias-Garcia} % Deixe os argumentos para nome e sobrenome vazios se não tiver coorientador 
+% ---
+
+% ---
+% Informações do trabalho
+% ---
+\tipotrabalho{Dissertação de Mestrado} % Dissertação de Mestrado; Tese de Doutorado (em português, mesmo que o trabalho seja em inglês)
+%\tipotrabalho{Tese de Doutorado}
+% ---
+\tipocurso{Programa de Pós Graduação em Sistemas Mecatrônicos} % Nome do curso de graduação ou do programa de pós-graduação, em português
+%\tipocurso{Programa de Pós-Graduação em Engenharia Elétrica}
+% ---
+% Texto que aparece na folha de rosto e na folha de aprovação
+\preambulo{Trabalho da Disciplina de Dissertação em Engenharia Mecatrônica 2024/1.} 
+%\preambulo{Tese de Doutorado submetida ao Programa de Pós-Graduação em Engenharia Elétrica da Universidade de Brasília como parte dos requisitos necessários para obtenção do grau de Doutor.}
+% Consulte a secretaria/coordenação do curso para saber o que deve ser escrito no preâmbulo. Use português mesmo que o trabalho seja em inglês.
+% ---
+% Informação adicional para ser impressa na folha de rosto
+\publicacao{} % Deixe o argumento vazio caso não haja
+%\publicacao{Publicação PPGEE 201/23} % Também imprime as informações do trabalho no topo da página da ficha catalográfica
+% ---
+
+% ---
+% Instituição
+% ---
+%\instituicao[Universidade de Brasília]{Faculdade de Tecnologia}{} % Use português mesmo que o trabalho seja em inglês
+\instituicao[Universidade de Brasília]{Faculdade de Tecnologia}{Programa de Pós Graduação em Sistemas Mecatrônicos} % Caso queira incluir o departamento da unidade acadêmica
+% ---
+
+% ---
+% Local e data da defesa
+% ---
+\local{Brasília}
+\dia{4}
+\mes{julho}
+\ano{2024}
+% ---
+
+% ---
+% Membros da banca
+% ---
+%
+\membrodabancai{Prof. Dr. Jones Yudi Silva,\\ UnB/FT/ENM} % Membro 1 - Geralmente é o orientador
+\membrodabancaifuncao{Orientador} % Em português, mesmo que o trabalho seja em inglês.
+\membrodabancaii{Prof. Dr. Janier Arias-Garcia,\\ UFMG/ENE} % Membro 2
+\membrodabancaiifuncao{Coorientador}
+\membrodabancaiii{} % Membro \membrodabancaiiifuncao{Examinador interno}
+\membrodabancaiv{} % Deixe vazio se não tiver o quarto membro
+\membrodabancaivfuncao{Examinador externo}
+\membrodabancav{} % Deixe vazio se não tiver o quinto membro
+\membrodabancavfuncao{Examinador externo}
+\signlinewidth{9cm}
+% ---
+
+% ---
+% Resumo em português
+% ---
+\begin{Resumo}
+Este documento exemplifica a elaboração de trabalho acadêmico (trabalho de conclusão de curso, dissertação e tese) a partir da classe UnB\TeX, uma extensão da classe \abnTeX\ para a Universidade de Brasília (UnB). Além de apresentar comandos básico de \LaTeX\ para inclusão de equações, tabelas e figuras, o documento mostra como utilizar pacotes adotados pela classe UnB\TeX\ para gerar referências bibliográficas, listas símbolos, caixas para teoremas e algoritmos, dentre outros elementos úteis ou obrigatórios para trabalhos acadêmicos. Espera-se que este documento facilite o uso da classe UnB\TeX\ na elaboração de trabalhos de alta qualidade gráfica mesmo por usuários com pouca experiência em \LaTeX.
+\end{Resumo}
+% ---
+
+% ---
+% Resumo em inglês
+% ---
+\begin{Abstract}
+This is the english abstract.
+\end{Abstract}
+% ---
+
+% ---
+% Palavras-chave (pelo menos três devem ser informadas)
+% ---
+\pchavei{Palavra chave 1}
+\kwordi{Keyword 1}
+\pchaveii{Palavra chave 2}
+\kwordii{Keyword 2}
+\pchaveiii{Palavra chave 3}
+\kwordiii{Keyword 3}
+\pchaveiv{Palavra chave 4} % Deixe vazio se não tiver
+\kwordiv{Keyword 4} % Deixe vazio se não tiver
+\pchavev{} % Deixe vazio se não tiver
+\kwordv{} % Deixe vazio se não tiver
+% ---
+
+% ---
+% Agradecimentos
+% ---
+% Idioma usado nos agradecimentos (pode ser em português, mesmo que o trabalho seja em inglês)
+
+% Dedicatória
+% ---
+
+% Primeiro autor
+%\begin{DedicatoriaAutorI}
+%Este trabalho é dedicado às crianças adultas que,\\
+%quando pequenas, sonharam em se tornar cientistas.
+%\end{DedicatoriaAutorI}
+
+% Segundo autor
+%\begin{DedicatoriaAutorII}
+%Dedicatória do segundo autor.
+%\end{DedicatoriaAutorII}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{Epigrafe}
+\vspace*{\fill}
+\begin{flushright}
+    \textit{``If you find that you're spending almost all your time on theory,\\
+    start turning some attention to practical things;\\
+    it will improve your theories.\\
+    If you find that you're spending almost all your time on practice,\\
+    start turning some attention to theoretical things;\\
+    it will improve your practice.''\\
+    (Donald Knuth)}
+\end{flushright}
+\end{Epigrafe}
+% ---
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Início do documento
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+\begin{document}
+
+% ------------------------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ------------------------------------------------------------------------
+\pretextual
+% ------------------------------------------------------------------------
+
+% Insere capa
+\imprimircapa
+
+% Insere folha de rosto
+%\imprimirfolhaderosto*
+
+% Insere ficha bibliográfica
+%\fichacatalografica
+
+% Insere folha de aprovação
+%\imprimirfolhadeaprovacao
+
+% Insere dedicatória (elemento opcional)
+%\imprimirdedicatoria
+
+% Insere agradecimentos (elemento opcional)
+%\imprimiragradecimentos
+
+% Insere epígrafe (elemento opcional)
+%\imprimirepigrafe
+
+% Insere resumos
+\IfStrEq*{\idioma}{brazil}
+{\imprimirresumo
+\imprimirabstract}
+{\imprimirabstract
+\imprimirresumo}
+
+% Insere lista de ilustrações
+%\pdfbookmark[0]{\listfigurename}{lof}
+%\listoffigures*
+%\cleardoublepage
+
+% Insere lista de tabelas
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
+
+% Insere as listas de abreviaturas e siglas e de símbolos
+%\PRIVATEbookmarkthis{\listadesiglasname}
+%\printnomenclature
+%\cleardoublepage
+
+% Insere o sumário
+%\pdfbookmark[0]{\contentsname}{toc}
+%\tableofcontents*
+%\cleardoublepage
+
+% ------------------------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ------------------------------------------------------------------------
+\textual
+% ------------------------------------------------------------------------
+
+% Imprime uma página para agrupar um conjunto de capítulos (parte)
+%\part{Nome da parte}
+
+% Capítulo de introdução
+\include{unbtex-example/capitulo1}
+
+% ------------------------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ------------------------------------------------------------------------
+\postextual
+% ------------------------------------------------------------------------
+
+% ---
+% Referências bibliográficas
+% ---
+% Arquivo com as referências bibliográficas
+\bibhang{2.2em} % Recuo da margem esquerda da lista de referências
+\bibliography{unbtex-example/referencias} % O estilo de citação é selecionado automaticamente
+% ---
+
+% ---
+% Apêndices
+% ---
+%\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+%\partapendices
+
+%\end{apendicesenv}
+% ---
+
+% ---
+% Anexos
+% ---
+%\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+%\partanexos
+
+%\include{unbtex-example/anexo-a}
+
+%\include{unbtex-example/anexo-b}
+
+%\end{anexosenv}
+% ---
+
+\end{document}

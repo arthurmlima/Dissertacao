@@ -1,0 +1,235 @@
+% ----------------------------------------------------------
+\chapter{Introduction}
+\label{cap:intr}
+% ----------------------------------------------------------
+
+\section{Background}
+The landscape of computing has undergone a revolutionary transformation in recent decades, driven by breakthroughs in diverse fields such as stochastic geometry, image processing, computer vision, and artificial intelligence (AI) \cite{Zhao2020}. Modern computational systems have evolved into sophisticated, multi-layered architectures capable of seamlessly integrating digital and analogue domains, often yielding outcomes that challenge our predictive capabilities and reshape our understanding of technological possibilities.
+
+This evolution has catalyzed an exponential growth in computing capabilities, manifesting most prominently in the proliferation of the \textit{Internet of Things} (IoT) and the paradigm shift towards the ubiquitous computing trend. These advancements stem from a confluence of factors, including breakthroughs in semiconductor physics, novel materials science applications, and innovative architectural designs that circumvent traditional limitations in power efficiency and heat dissipation.
+
+The convergence of these hardware advancements with sophisticated software algorithms has led to a new era of intelligent systems. Unmanned Aerial Vehicles (UAVs), also known as drones, enable new applications that can change society organisation \cite{Sharma.2020}. Rather than being merely a product of miniaturisation, modern UAVs are integrated into Unmanned Aircraft System (UASs) capable network connectivity, i.e. sending and receiving data using wireless radio, and become Remote Piloted Aicraft System (RPAS).
+ 
+UAVs are employed in many ways by communication companies that seek to expand the signal coverage of their cellular service or to attend an unusual demand such as large venues that swift rapidly the network links connection. It is also largely used for monitoring and surveillance, healthcare and agriculture. 
+
+As computers become more deeply integrated into the fabric of society, the importance of cybersecurity has escalated dramatically. The security of digital systems and data has transitioned from a niche technical concern to a fundamental aspect of national security and global geopolitics. Advanced persistent threats (APTs), often state-sponsored, exploit vulnerabilities in complex systems, necessitating equally sophisticated defensive measures. Machine learning and AI are increasingly being deployed in cybersecurity applications, from anomaly detection in network traffic to predictive threat analysis \cite{Liu2016}.
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{unbtex-example/Complexity.pdf}
+        \caption{Power scale of computer types present in heterogeneous networks. Source: author.}
+    \label{fig:5a}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{unbtex-example/LWCparadigm.pdf}
+
+    \caption{Trade-off paradigm for cryptography encryption in computers. Source: author}
+    \label{fig:5b}
+  \end{minipage}
+\end{figure}
+
+
+At the heart of many cybersecurity measures lies the critical role of cryptography, which fundamentally relies on the generation and application of statistically random models \cite{10.5555/2829193}. The strength of modern cryptographic systems is intrinsically related to the quality of randomness they can harness. This reliance on randomness extends to various aspects of information security \cite{Onuki2022}, from encryption key generation to secure communication protocols \cite{Wei.2024}
+
+Pseudo-Random Number Generators (PRNGs) serve as the mathematical and logical structures that attempt to produce sequences of numbers that approximate the properties of true randomness. These algorithms are deterministic in nature, yet they aim to generate outputs that are statistically indistinguishable from truly random sequences. The design of robust PRNGs involves sophisticated mathematical techniques drawn from number theory, chaos theory, and computational complexity.
+
+
+One of the primary challenges in PRNG design is achieving a balance between efficiency and unpredictability. However, the deterministic nature of PRNGs presents inherent limitations for high-security applications. True Random Number Generators (TRNGs), which derive randomness from physical processes like atmospheric noise or radioactive decay, are often employed in critical security systems. These hardware-based solutions offer a higher degree of entropy, however it is not possible to reproduce a TRNG which limits the use in cryptography scenario.
+
+The concept of entropy in information theory plays a pivotal role in understanding the security implications of random number generation. In cryptographic contexts, entropy quantifies the unpredictability of a system or the amount of information that is truly random. Whereas the encryption concept for informational security have been proposed in almost 70 years by Claude Shannon \cite{Shannon.1949,Shannon1948}, plenty of research still attempting to search for better models that are capable of providing more apparent random dynamics with little hardware footprint.
+
+Now with UAVs, edge computing and most internconnect models, security is unprecedented. The UAVs have regulatory demands \cite{RTCA_DO362,RTCA_DO366}, application constraints, real-time processing of complex applications. With the preceding discussion it is of great relevance to take a further look into the security of transactions between the UAVs and terrestrial base station or a UAV peer.
+
+This dissertation surveys the feasibility of current encryption algorithms while it also proposes a new architecture for encryption/decryption of data that attempt to be lightweight power and secure.
+
+
+
+\section{Research Question, General and Specific Goals}
+which Chaos-based computing models are better suited for performing cryptographic hardware in digital communication to meet the security and operational requirements of open access systems such as UAVs?\\
+%das comunicação sem-fio UAV/UAS é progredida no embasamento em PRNGs elementares ?
+
+\noindent\textbf{General goal}
+
+Development and characterisation of an architecture for communication and security focusing on cryptography based on the finite-precision error of numerical models aligned with \cite{RTCA_DO362} and \cite{RTCA_DO365}\\
+
+\noindent\textbf{Specific goals}
+\begin{itemize}
+    \item Development and integration of cryptographic functions
+    \begin{itemize}
+        \item Symmetric ciphers
+        \item Asymmetric ciphers
+        \item Digest functions
+    \end{itemize}
+    \item Communication protocol
+    \item Open channel model, modulation studies
+    \item Integration with UAV control
+\end{itemize}
+\noindent \textbf{Dissertation Contributions to literature.}
+
+\noindent The research from this dissertation have been published in international conferences.
+\begin{itemize}
+    \item LIMA, A. M.; NARDO, L. G.; NEPOMUCENO, E.; ARIAS-GARCIA, J.; YUDI, J. Design of an advanced system-on-chip architecture for chaotic image encryption. 2023 36th SBC/SBMicro/IEEE/ACM Symposium on Integrated Circuits and Systems Design (SBCCI), v. 00, p. 1–6, 2023.
+\end{itemize}
+Proposed a new symmetric cipher algorithm using the discretisation method for Chua circuit chaotic system using lower bound error of natural interval extensions\\
+\begin{itemize}
+    \item LIMA, A. M.; SILVA, D. L.; SANTOS, H. I. A.; ARIAS-GARCIA, J.; BESERRA, G. S.; YUDI, J. A Heterogeneous Multi-RISCV Architecture for Image Processing and Computer Vision Applications. ANDESCON 2024, p. 1-6, 2024.
+\end{itemize}
+Integration platform for hosting control and adquisition of UAV mainly focused on Image processing computer vision (IP/CV) with RISC-V core \cite{picorv32}.
+
+\chapter{Fundamentals}
+\section{Bibliographic Review}
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.95]
+    \begin{axis}[
+        width=\textwidth,
+        height=0.75\textwidth,
+        xlabel={Year},
+        ylabel={Citations},
+        xtick=data,
+        xticklabel style={rotate=45,anchor=north east},
+        ymin=0, ymax=3000,
+        ytick={0,500,1000,1500,2000,2500,3000},
+        grid=major,
+        legend pos=north west
+    ]
+    \addplot[
+        color=blue,
+        mark=o
+    ] coordinates {
+        (2015,28) (2016,94) (2017,290) (2018,674) (2019,1276)
+        (2020,1681) (2021,2119) (2022,2449) (2023,2820) (2024,2169)
+    };
+    \legend{Citations}
+    \end{axis}
+    \end{tikzpicture}
+\end{minipage}%
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.95]
+    \begin{axis}[
+        width=\textwidth,
+        height=0.75\textwidth,
+        xlabel={Year},
+        ylabel={Documents},
+        xtick=data,
+        xticklabel style={rotate=45,anchor=north east},
+        ymin=0, ymax=100,
+        ytick={20,40,60,80,100},
+        grid=major,
+        legend pos=north west
+    ]
+    \addplot[
+        color=blue,
+        mark=o
+    ] coordinates {
+    (2015,27) (2016,40) (2017,43) (2018,66) (2019,60) (2020,61) (2021,72) (2022,83) (2023,92) (2024,92)
+    };
+    \legend{Documents}
+    \end{axis}
+    \end{tikzpicture}
+\end{minipage}
+\caption{Review of keywords "Cryptography", "Chaos" and "Communications" search in \textit{Scopus} database.}
+\end{figure}
+\begin{itemize}
+    \item \textbf{Mandatory:} TITLE-ABS-KEY(
+    \begin{itemize}
+        \item (wireless com* OR ``radio frequency'' OR rf OR ``software defined radio'' OR sdr OR transceiver OR ``digital communication'' OR ``communication systems'')
+        \item AND
+        \item (security OR cryptography OR encryption OR ``secure transmission'' OR ``physical layer security'')
+    \end{itemize}
+    \item \textbf{Classifications:} AND
+    \begin{itemize}
+        \item TITLE-ABS-KEY(uav\^{}2 OR drone\^{}2 OR ``unmanned aerial vehicle''\^{}2 OR vanet\^{}2 OR ``vehicular network''\^{}2 OR ``MANET'' OR ``FANET'') AND
+        \item TITLE-ABS-KEY(``Chaotic Systems''\^{}3 OR ``Chaos''\^{}3 OR ``Non linear dynamics''\^{}3) AND
+        \item TITLE-ABS-KEY(``FPGA''\^{}2 OR ``Programmable Logic''\^{}2 OR ``DSP''\^{}2 OR ``Circuits and Systems''\^{}3 OR ``SoC''\^{}2) AND
+        \item TITLE-ABS-KEY(``spread spectrum''\^{}3 OR ofdm\^{}3 OR ``orthogonal frequency division multiplexing''\^{}3 OR mimo\^{}3 OR ``multiple-input multiple-output''\^{}3 OR ``frequency hopping''\^{}3 OR cdma\^{}3 OR ``code division multiple access''\^{}3)\^{}0.5
+    \end{itemize}
+\end{itemize}
+
+
+
+\begin{table}[h!]]
+\centering
+\label{table}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|l|p{6cm}|p{5cm}|l|}
+\hline
+\textbf{Scientific Base} & \textbf{Citation} & \textbf{Article Title} & \textbf{Journal Name} & \textbf{Qualis} \\\hline
+         Scopus &         3 & Optimization of Full-Duplex UAV Secure Communication \cite{} &                                             Drones  & A3 \\ \hline
+         Scopus &        27 & UAV Detection and Localization Based on Multi-Directional Antennas &                               IEEE Sensors Journal & A1 \\\hline
+         Scopus &        15 & Trajectory and Transmit Power Optimization for UAV Networks &          IEEE Transactions on Vehicular Technology & A1 \\\hline
+         Scopus &         6 & Secure beamforming design for the UAV-enabled transmission network & Eurasip Journal on Wireless Communications and Networking  & A4 \\\hline
+         Scopus &        13 & Joint obstacle avoidance and 3D deployment for UAV networks &                                        IEEE Access & A3\\\hline
+         Scopus &        39 & Intelligent reflecting surface and UAV assisted secure communication &          IEEE Transactions on Vehicular Technology & A1\\\hline
+         Scopus &        17 & Feature article: Security vulnerabilities of cyber-physical UAV systems &     IEEE Aerospace and Electronic Systems Magazine & A2 \\\hline
+         Scopus &        39 & Energy-efficient trajectory design for secure UAV communication &                           Vehicular Communications  & A1\\\hline
+\end{tabular}
+}
+\label{tab:1}
+
+
+\end{table}
+
+
+
+\section{Related Work}
+\label{sec:Rel-Work}
+
+Chaos-based encryption harnesses the apparent randomness inherent in mathematical chaotic models to generate keystreams. These models range from simple one-dimensional maps like the logistic map \cite{Singh.2023b}, to more complex systems such as the Lorenz \cite{Nguyen.2022}. Various techniques are utilized in conjunction with chaotic systems to enhance unpredictability and optimize the performance of chaos-based cryptography.
+
+However, one challenge in chaos-based cryptography arises from quantization errors introduced during the simulation of chaotic systems on finite-precision computers, leading to periodic and bounded solutions. To mitigate this issue, various strategies have been proposed, including restructuring computing architectures through combinations or cascading techniques, implementing rule-defined switching mechanisms, and introducing pseudo-random variations in inputs \cite{Alawida.2024}. While these approaches have shown promise, their practical implementation as encryption schemes is restricted by their lack of consideration for the limited resources of digital devices.
+
+In this context, emerging chaos-based methods, combined with advancements in computer arithmetic, aim to minimize the silicon footprint. Reference \cite{DaSilva.2023} utilized the Half-Unit-Bias fixed-point format to propose a novel hardware architecture for a chaos-based pseudo-random number generator. Their approach involved bicoupling the tent map with the Bernoulli map, resulting in a significant impact on logical resources and performance. References \cite{Nardo.2019} developed simple hardware designs for chaotic maps using basic logic elements such as shift registers and XOR gates, showcasing potential applications across various chaos-based systems.
+
+Finite-precision and quantization errors play a pivotal role in the efficiency of SoC designs and are associated with the random-like behavior of systems. \cite{Tutueva.2021} demonstrated that finite-precision and discretization techniques significantly affect the robustness of chaos-based PRNGs). Additionally, \cite{Nepomuceno.2019} introduced a fresh perspective on chaos-based symmetric encryption by proposing a stream-cipher based on the lower-bound error concept, derived from two natural interval extensions of the logistic map. Subsequently, \cite{Zhou.2023} expanded upon this concept by presenting a novel framework for generating new chaotic signals utilizing the limited precision of computers.
+Recently, \cite{Lima.2023} conducted a preliminary investigation into a stream-cipher based on the lower-bound error theorem, employing high-level synthesis tools in conjunction with a fourth-order Runge-Kutta method. The resultant hardware showcased the potential for parallel processing within resource-constrained devices. This paper builds upon their findings and extends the scope of their research.
+\section{Preliminary Concepts}
+The randomness of computing PRNG is tied to chaotic systems, perhaps more than we are aware \cite{Herring.1989}. The true nature of chaotic systems is intrinsically erratic and sensitive to initial conditions, which makes them perfectly adequate for use in encryption schemes.
+These systems are obtained by natural phenomena like biochemical reactions \cite{Pu.2020} and weather forecasts \cite{Lin.2024}. It is also possible to assume much more cohesive formats, like 1-D maps such as the logistic map \cite{May.1976g0uk}. Complex dynamics of chaotic systems are observed in many environments but its behaviour is mainly studied in numerical models.
+
+In the context of cryptography and security, chaotic systems offer unique properties that can be leveraged for encryption purposes. One such system that has garnered significant attention is the chaotic Chua's circuit. This circuit comprises four linear components: a resistor ($R$), an inductor ($L$), and two capacitors ($C_1$ and $C_2$), all interconnected by Chua's piecewise linear diode ($D$). The dynamics of this system are elucidated in \cite{Nardo.2019}.
+
+\subsection{Finite-precision error}
+In chaotic systems, finite-precision computational constraints make it impossible to achieve exact orbits. Instead, we work with approximations called pseudo-orbits.
+\begin{definition}
+A true orbit of a system modelled by $\dot{x}_n = f(x_n)$ is a sequence ${x_n} = [x_0, x_1, x_2, x_3, \ldots, x_n]$.
+\end{definition}
+\begin{definition}
+The $m^{th}$ pseudo-orbit ${\hat{x}{m,n}} = [\hat{x}{m,0}, \hat{x}{m,1}, \ldots, \hat{x}{m,n}]$ approximates the true orbit ${x_n}$, where $|x_n-\hat{x}{m,n}| \leq \delta{m,n}$ and $\delta_{m,n} \in \mathbb{R_+}$ is the error.
+\end{definition}
+Pseudo-orbits provide an interval estimate of the true orbit's position. The challenge lies in quantifying the error between the pseudo-orbit and the true orbit.
+\begin{definition}
+A natural interval extension $F(X)$ of $f(x)$ satisfies $F(X) = f(x)$, where $X = [\underline{X},\overline{X}]$ is a closed interval of real numbers.
+\end{definition}
+Natural interval extensions can lead to different computational outcomes due to finite-precision errors. Consider these examples from Chua's circuit:
+\begin{equation}
+C_1 \dfrac{dV_{C_1}}{dt} = \dfrac{V_{C_2} - V_{C_1}}{R} - I_{D},
+\label{eq:Extension1}
+\end{equation}
+\begin{equation}
+C_1 \dfrac{dV_{C_1}}{dt} = \dfrac{V_{C_2}}{R} - \dfrac{V_{C_1}}{R} - I_{D}.
+\label{eq:Extension2}
+\end{equation}
+These equations are mathematically equivalent but can produce divergent results due to finite-precision errors in digital systems.
+\begin{definition}[Lower Bound Error]
+The lower-bound error $\delta_{\alpha,n}$ between two pseudo-orbits ${\hat{x}{a,n}}$ and ${\hat{x}{b,n}}$ is:
+\begin{equation}
+\delta_{\alpha,n} = \dfrac{|\hat{x}{a,n} - \hat{x}{b,n}|}{2}.
+\label{eq:LBE}
+\end{equation}
+\end{definition}
+The lower-bound error quantifies the difference between digital arithmetical dynamical systems (pseudo-orbits) and the true orbit. This concept is crucial for understanding the behaviour of chaotic systems in digital implementations and forms the basis for the encryption scheme proposed in this dissertation.
+\begin{figure}[ht!]
+\centering
+\input{unbtex-example/lbe}
+\caption{Lower-bound error progression in Chua's circuit for single and double precision IEEE-754 floating-point formats. Errors propagate until is no longer representable, marking a threshold for erratic behaviour usable as an encryption keystream.}
+\label{fig:lower-bound-error}
+\end{figure}
+Figure \ref{fig:lower-bound-error} illustrates how the lower-bound error progresses during Chua's circuit execution, considering the extensions of \ref{eq:Extension1} and \ref{eq:Extension2}. This demonstrates the accumulation of uncertainties in the numerical model, which we leverage for encryption.
